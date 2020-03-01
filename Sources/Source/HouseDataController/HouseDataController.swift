@@ -49,15 +49,17 @@ struct HouseDataController {
     
     func writeHouseDataIntoCSV(_ allHouseData: [HouseData]) throws {
         Console.writeMessage("**Writing data to CSV")
+        Console.writeMessage(FileManager.default.currentDirectoryPath)
         let workingDirectory = FileManager.default.currentDirectoryPath
         let csvFilePath = workingDirectory + "/data.csv"
         let csvFileURL = URL(fileURLWithPath: csvFilePath)
         
         for houseData in allHouseData {
+            let items = houseData.mapForCSV()
             
-            let items = [houseData.data.homeDetailsByUrl.__typename]
-            
-            try CSVWriter.addNewRowWithItems(items, to: csvFileURL)
+            for item in items {
+                try CSVWriter.addNewRowWithItems(item, to: csvFileURL)
+            }
         }
     }
 }

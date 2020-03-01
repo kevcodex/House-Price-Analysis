@@ -14,17 +14,21 @@ public struct App {
     public func start() {
         
         let searchController = HouseURLController()
+        let zipCode = "92130"
         
-        guard let allStreetURLs = searchController.fetchAllStreetURLs(for: "92130") else {
+        Console.writeMessage("Fetching all street urls for zip code: \(zipCode)")
+        guard let allStreetURLs = searchController.fetchAllStreetURLs(for: zipCode) else {
             exit(1)
         }
         
+        Console.writeMessage("Fetching all house urls!")
         guard let allHouseURLs = searchController.fetchHouses(limit: 1, allStreetURLs: allStreetURLs).elements().nonEmpty else {
             exit(1)
         }
         
         let houseDataController = HouseDataController()
         
+        Console.writeMessage("Fetching all house data!")
         guard let allHouseData = houseDataController.fetchAllHouseData(urls: allHouseURLs).elements().nonEmpty else {
             exit(1)
         }
