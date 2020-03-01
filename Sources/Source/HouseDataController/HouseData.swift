@@ -122,9 +122,14 @@ extension HouseData {
         
         for price in priceHistory {
             
+            guard price.event?.lowercased() == "sold" else {
+                continue
+            }
+            
             let propertyType = data.homeDetailsByUrl?.tracking?.first { $0.key == "propertyType" }?.value
             let lotSize = data.homeDetailsByUrl?.features?.attributes?.first { $0.formattedName == "Lot Size" }?.formattedValue
             let yearBuilt = data.homeDetailsByUrl?.features?.attributes?.first { ($0.formattedValue?.contains("Built") ?? false) }?.formattedValue
+            let stories = data.homeDetailsByUrl?.features?.attributes?.first { $0.formattedName == "Stories" }?.formattedValue
             
             let latitudeString: String
             if let latitude = data.homeDetailsByUrl?.location?.coordinates?.latitude {
@@ -167,7 +172,8 @@ extension HouseData {
                  price.price?.formattedPrice,
                  priceString,
                  data.homeDetailsByUrl?.hoaFee?.totalAmount?.currencyCode,
-                 data.homeDetailsByUrl?.hoaFee?.period
+                 data.homeDetailsByUrl?.hoaFee?.period,
+                 stories
             ]
             
             let compactedItems = possibleItems.map { $0?.replacingOccurrences(of: ",", with: "") ?? "" }

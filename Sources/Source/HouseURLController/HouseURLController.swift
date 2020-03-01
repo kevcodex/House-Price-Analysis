@@ -92,7 +92,6 @@ struct HouseURLController {
             operationQueue.waitUntilAllOperationsAreFinished()
         }
         
-        
         return allHouseURLs
     }
 }
