@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Kanna",
+        "repositoryURL": "https://github.com/tid-kijyun/Kanna.git",
+        "state": {
+          "branch": null,
+          "revision": "9b8f73f8c8e145dc496565bbf878a709793e7ba3",
+          "version": "5.0.0"
+        }
+      },
+      {
+        "package": "MiniNe",
+        "repositoryURL": "https://github.com/kevcodex/MiniNe",
+        "state": {
+          "branch": null,
+          "revision": "57e730d09bc142456c378a9a5945742dbbfec8b9",
+          "version": "3.1.0"
+        }
+      },
+      {
+        "package": "ScriptHelpers",
+        "repositoryURL": "https://github.com/kevcodex/ScriptHelpers",
+        "state": {
+          "branch": null,
+          "revision": "05083476568954bbe9e86b9e13d3547184d775b5",
+          "version": "1.4.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
