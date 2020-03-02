@@ -14,7 +14,7 @@ public struct App {
     public func start() {
         
         let searchController = HouseURLController()
-        let zipCode = "92011"
+        let zipCode = "92130"
         
         Console.writeMessage("Fetching all street urls for zip code: \(zipCode)")
         guard let allStreetURLs = searchController.fetchAllStreetURLs(for: zipCode) else {
